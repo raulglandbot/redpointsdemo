@@ -174,6 +174,26 @@
 </ul>											</div>
 				
 									<div  class="main-header__altmenu-container">
+												<div class="rp-nav-chat" id="rpNavChat">
+	<div class="rp-nav-chat__field">
+		<svg class="rp-nav-chat__icon" viewBox="0 0 24 24" aria-hidden="true">
+			<path d="M11 4a7 7 0 1 1 0 14 7 7 0 0 1 0-14m0-2a9 9 0 1 0 5.65 16l4.68 4.67 1.41-1.41-4.67-4.68A9 9 0 0 0 11 2z"></path>
+		</svg>
+		<input id="rpNavChatInput" class="rp-nav-chat__input" type="text" aria-label="Ask Red Points AI" placeholder="Ask Red Points AI..." autocomplete="off">
+		<button type="button" id="rpNavChatSend" class="rp-nav-chat__send" aria-label="Send question">
+			<svg viewBox="0 0 24 24" aria-hidden="true">
+				<path d="M3 12h14m0 0-5-5m5 5-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+			</svg>
+		</button>
+	</div>
+	<ul id="rpNavChatOptions" class="rp-nav-chat__options" role="listbox" aria-label="Suggested prompts">
+		<li><button type="button" class="rp-nav-chat__option" data-prompt="How can Red Points remove online counterfeits?">How can Red Points remove online counterfeits?</button></li>
+		<li><button type="button" class="rp-nav-chat__option" data-prompt="How do you protect brands from piracy?">How do you protect brands from piracy?</button></li>
+		<li><button type="button" class="rp-nav-chat__option" data-prompt="Can you help with marketplace infringement?">Can you help with marketplace infringement?</button></li>
+		<li><button type="button" class="rp-nav-chat__option" data-prompt="How does domain and fake website takedown work?">How does domain and fake website takedown work?</button></li>
+		<li><button type="button" class="rp-nav-chat__option" data-prompt="What pricing options are available?">What pricing options are available?</button></li>
+	</ul>
+</div>
 												<ul id="menu-alternative-menu" class="alternative-menu menu"><li id="menu-item-24660" class="menu-button menu-button--call fixed-on-mobile-header menu-item menu-item-type-custom menu-item-object-custom menu-item-"><a class="item" href="#popup-cta"><p class="item__title">Talk to sales</p></a></li>
 <li id="menu-item-18544" class="menu-button menu-item menu-item-type-post_type menu-item-object-page menu-item-"><a class="item" href="https://www.redpoints.com/request-demo/"><p class="item__title">Request demo</p></a></li>
 </ul>					</div>
@@ -1495,8 +1515,163 @@ if(is_iframe){iframe_count+=1}}});if(image_count>0||iframe_count>0||rocketlazy_c
   .rp-chat-btn:hover { background: rgba(17, 24, 39, 0.03); }
   .rp-chat-btn:focus-visible { outline: 3px solid rgba(170, 70, 206, 0.45); outline-offset: 2px; }
 
+  .main-header__altmenu-container {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .rp-nav-chat {
+    position: relative;
+    width: min(420px, 38vw);
+    margin-left: auto;
+    font-family: "PP Neue Montreal", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+
+  .rp-nav-chat__field {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    height: 44px;
+    padding: 0 10px 0 12px;
+    border-radius: 9999px;
+    border: 1px solid transparent;
+    background:
+      linear-gradient(135deg, rgba(28, 24, 52, 0.78) 0%, rgba(36, 29, 58, 0.72) 100%) padding-box,
+      linear-gradient(120deg, #5d2ee6 0%, #7e47ff 28%, #aa46ce 52%, #ff9b63 76%, #5d2ee6 100%) border-box;
+    background-size: 100% 100%, 320% 320%;
+    animation: rp-nav-gradient-shift 8s ease infinite;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 10px 30px rgba(14, 12, 28, 0.42), 0 0 22px rgba(170, 70, 206, 0.3);
+  }
+
+  .rp-nav-chat__icon {
+    width: 16px;
+    height: 16px;
+    fill: rgba(255, 255, 255, 0.68);
+    flex: 0 0 auto;
+  }
+
+  .rp-nav-chat__input {
+    flex: 1 1 auto;
+    border: 0;
+    outline: none;
+    background: transparent;
+    font: 500 14px/1.2 "PP Neue Montreal", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    color: rgba(255, 255, 255, 0.94);
+    min-width: 0;
+  }
+
+  .rp-nav-chat__input::placeholder {
+    color: rgba(255, 255, 255, 0.42);
+  }
+
+  .rp-nav-chat__send {
+    width: 28px;
+    height: 28px;
+    border: 1px solid rgba(255, 255, 255, 0.36);
+    border-radius: 9999px;
+    background: rgba(255, 255, 255, 0.9);
+    color: #8c3f73;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    flex: 0 0 auto;
+    padding: 0;
+    transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .rp-nav-chat__send:hover {
+    background: #fff;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(170, 70, 206, 0.34);
+  }
+
+  .rp-nav-chat__send svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .rp-nav-chat__field:focus-within {
+    box-shadow: 0 0 0 3px rgba(126, 71, 255, 0.34), 0 14px 34px rgba(170, 70, 206, 0.32);
+  }
+
+  .rp-nav-chat__send:focus-visible,
+  .rp-nav-chat__option:focus-visible {
+    outline: 2px solid rgba(232, 116, 58, 0.6);
+    outline-offset: 2px;
+  }
+
+  .rp-nav-chat__options {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 0;
+    right: 0;
+    margin: 0;
+    padding: 10px;
+    list-style: none;
+    border: 1px solid transparent;
+    background:
+      linear-gradient(180deg, rgba(20, 17, 38, 0.95) 0%, rgba(28, 23, 46, 0.93) 100%) padding-box,
+      linear-gradient(130deg, rgba(93, 46, 230, 0.7) 0%, rgba(170, 70, 206, 0.64) 48%, rgba(255, 155, 99, 0.72) 100%) border-box;
+    border-radius: 16px;
+    box-shadow: 0 20px 45px rgba(10, 8, 22, 0.48), 0 0 24px rgba(170, 70, 206, 0.22);
+    z-index: 100;
+    display: none;
+    backdrop-filter: blur(10px);
+    animation: rp-nav-gradient-shift 9s ease infinite;
+  }
+
+  .rp-nav-chat.is-open .rp-nav-chat__options {
+    display: block;
+  }
+
+  .rp-nav-chat__options > li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .rp-nav-chat__options > li + li {
+    margin-top: 6px;
+  }
+
+  .rp-nav-chat__option {
+    width: 100%;
+    text-align: left;
+    border: 0;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    color: rgba(255, 255, 255, 0.94);
+    font: 500 14px/1.25 "PP Neue Montreal", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    padding: 11px 12px;
+    cursor: pointer;
+    transition: background 0.16s ease, transform 0.16s ease, box-shadow 0.16s ease;
+  }
+
+  .rp-nav-chat__option:hover {
+    background: linear-gradient(100deg, rgba(93, 46, 230, 0.32) 0%, rgba(170, 70, 206, 0.28) 52%, rgba(255, 155, 99, 0.3) 100%);
+    transform: translateX(2px);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.14);
+  }
+
+  @keyframes rp-nav-gradient-shift {
+    0% { background-position: 0% 50%, 0% 50%; }
+    50% { background-position: 0% 50%, 100% 50%; }
+    100% { background-position: 0% 50%, 0% 50%; }
+  }
+
   .rp-chat-body { height: calc(100% - 72px); }
-  .rp-chat-iframe { width: 100%; height: 100%; border: 0; display: block; }
+  .rp-chat-container { width: 100%; height: 100%; }
+  .LivechatLauncher { display: none !important; }
+
+  @media (max-width: 1040px) {
+    .rp-nav-chat {
+      display: none;
+    }
+  }
 
   @media (max-width: 480px) {
     .rp-chat-panel { left: 12px; right: 12px; width: auto; bottom: 92px; height: min(88vh, 860px); border-radius: 22px; }
@@ -1525,7 +1700,7 @@ if(is_iframe){iframe_count+=1}}});if(image_count>0||iframe_count>0||rocketlazy_c
   </div>
 
   <div class="rp-chat-body">
-    <iframe id="rpChatIframe" class="rp-chat-iframe" title="Red Points Assistant chat" loading="lazy" allow="clipboard-write; microphone; camera"></iframe>
+    <div id="rpChatContainer" class="rp-chat-container"></div>
   </div>
 </div>
 
@@ -1545,21 +1720,128 @@ if(is_iframe){iframe_count+=1}}});if(image_count>0||iframe_count>0||rocketlazy_c
 
 <script>
 (function () {
-  var BOT_URL = "https://landbot.pro/v3/H-3323485-8RB1EQDFH3J5CVMZ/index.html";
+  var BOT_CONFIG_URL = "https://storage.googleapis.com/landbot.pro/v3/H-3323485-8RB1EQDFH3J5CVMZ/index.json";
+  var LANDBOT_SDK_URL = "https://cdn.landbot.io/landbot-3/landbot-3.0.0.mjs";
+  var LANDBOT_SDK_ID = "rp-landbot-sdk";
 
   var panel = document.getElementById("rpChatPanel");
-  var iframe = document.getElementById("rpChatIframe");
+  var container = document.getElementById("rpChatContainer");
   var launcher = document.getElementById("rpChatLauncher");
   var launcherIcon = document.getElementById("rpChatLauncherIcon");
   var closeBtn = document.getElementById("rpChatClose");
   var hint = document.getElementById("rpChatHint");
-  if (!panel || !iframe || !launcher || !launcherIcon || !closeBtn || !hint) return;
+  if (!panel || !container || !launcher || !launcherIcon || !closeBtn || !hint) return;
 
   if (panel.parentNode !== document.body) document.body.appendChild(panel);
   if (hint.parentNode !== document.body) document.body.appendChild(hint);
   if (launcher.parentNode !== document.body) document.body.appendChild(launcher);
 
-  var openedOnce = false;
+  var landbotInitStarted = false;
+  var landbotReady = false;
+  var pendingReadyCallbacks = [];
+  var readyPollTimer = null;
+  var landbotCreated = false;
+
+  function isLandbotReady() {
+    var lb = window.rpLandbotInstance;
+    return !!(lb && typeof lb.sendMessage === "function");
+  }
+
+  function flushReadyCallbacks() {
+    if (!isLandbotReady()) return;
+    landbotReady = true;
+    if (readyPollTimer) {
+      clearInterval(readyPollTimer);
+      readyPollTimer = null;
+    }
+    var queue = pendingReadyCallbacks.slice();
+    pendingReadyCallbacks = [];
+    queue.forEach(function (cb) {
+      try { cb(window.rpLandbotInstance); } catch (err) {}
+    });
+  }
+
+  function createLandbotInstance(tries) {
+    var maxTries = typeof tries === "number" ? tries : 25;
+    if (isLandbotReady()) {
+      flushReadyCallbacks();
+      return;
+    }
+
+    if (window.Landbot && typeof window.Landbot.Container === "function" && !landbotCreated) {
+      try {
+        window.rpLandbotInstance = new window.Landbot.Container({
+          container: "#rpChatContainer",
+          configUrl: BOT_CONFIG_URL
+        });
+        window.myLandbot = window.rpLandbotInstance;
+        landbotCreated = true;
+      } catch (err) {}
+      flushReadyCallbacks();
+      return;
+    }
+
+    if (maxTries <= 0) return;
+    setTimeout(function () {
+      createLandbotInstance(maxTries - 1);
+    }, 200);
+  }
+
+  function initLandbotContainer() {
+    if (landbotInitStarted) return;
+    landbotInitStarted = true;
+
+    var existingSdk = document.getElementById(LANDBOT_SDK_ID);
+    if (existingSdk) {
+      createLandbotInstance(30);
+      return;
+    }
+
+    var sdkScript = document.createElement("script");
+    sdkScript.id = LANDBOT_SDK_ID;
+    sdkScript.type = "module";
+    sdkScript.async = true;
+    sdkScript.src = LANDBOT_SDK_URL;
+    sdkScript.addEventListener("load", function () {
+      setTimeout(function () {
+        createLandbotInstance(30);
+      }, 500);
+    });
+    sdkScript.addEventListener("error", function () {
+      if (readyPollTimer) {
+        clearInterval(readyPollTimer);
+        readyPollTimer = null;
+      }
+      pendingReadyCallbacks = [];
+    });
+    document.body.appendChild(sdkScript);
+  }
+
+  function waitForLandbotReady(cb, tries) {
+    var maxTries = typeof tries === "number" ? tries : 40;
+    if (isLandbotReady()) {
+      landbotReady = true;
+      cb(window.rpLandbotInstance);
+      return;
+    }
+
+    pendingReadyCallbacks.push(cb);
+    initLandbotContainer();
+    if (readyPollTimer) return;
+
+    readyPollTimer = setInterval(function () {
+      if (isLandbotReady()) {
+        flushReadyCallbacks();
+        return;
+      }
+      maxTries -= 1;
+      if (maxTries <= 0) {
+        clearInterval(readyPollTimer);
+        readyPollTimer = null;
+        pendingReadyCallbacks = [];
+      }
+    }, 200);
+  }
 
   function setLauncherIcon(open) {
     launcherIcon.innerHTML = open
@@ -1567,44 +1849,98 @@ if(is_iframe){iframe_count+=1}}});if(image_count>0||iframe_count>0||rocketlazy_c
       : '<path d="M21 15a4 4 0 0 1-4 4H7l-4 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"></path>';
   }
 
-  function openChat() {
-    panel.classList.add("is-open");
-    panel.setAttribute("aria-hidden", "false");
-    launcher.setAttribute("aria-expanded", "true");
-    setLauncherIcon(true);
-
-    if (!openedOnce) {
-      iframe.src = BOT_URL;
-      openedOnce = true;
-    }
-
+  function setLauncherState(open) {
+    launcher.setAttribute("aria-expanded", open ? "true" : "false");
+    setLauncherIcon(open);
     launcher.classList.remove("rp-chat-attention");
     hint.classList.remove("is-visible");
+    panel.classList.toggle("is-open", open);
+    panel.setAttribute("aria-hidden", open ? "false" : "true");
+  }
+
+  function openChat() {
+    setLauncherState(true);
+    initLandbotContainer();
   }
 
   function closeChat() {
-    panel.classList.remove("is-open");
-    panel.setAttribute("aria-hidden", "true");
-    launcher.setAttribute("aria-expanded", "false");
-    setLauncherIcon(false);
+    setLauncherState(false);
   }
 
-  function toggleChat() {
-    panel.classList.contains("is-open") ? closeChat() : openChat();
+  function openChatWithPrompt(prompt) {
+    var text = (prompt || "").trim();
+    if (!text) return;
+    setLauncherState(true);
+    initLandbotContainer();
+    waitForLandbotReady(function (lb) {
+      try {
+        lb.sendMessage({ type: "text", message: text });
+      } catch (err) {}
+    });
   }
 
-  launcher.addEventListener("click", toggleChat, { passive: true });
+  window.rpOpenChatWithPrompt = openChatWithPrompt;
+
+  launcher.addEventListener("click", openChat, { passive: true });
   launcher.addEventListener("keydown", function (e) {
-    if (e.key === "Enter" || e.key === " ") { e.preventDefault(); toggleChat(); }
+    if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openChat(); }
   });
   closeBtn.addEventListener("click", closeChat, { passive: true });
 
   document.addEventListener("keydown", function (e) {
-    if (e.key === "Escape" && panel.classList.contains("is-open")) closeChat();
+    if (e.key === "Escape" && launcher.getAttribute("aria-expanded") === "true") closeChat();
   });
+
+  var navChat = document.getElementById("rpNavChat");
+  var navInput = document.getElementById("rpNavChatInput");
+  var navSend = document.getElementById("rpNavChatSend");
+  var navOptions = document.getElementById("rpNavChatOptions");
+  if (navChat && navInput && navSend && navOptions) {
+    function setNavOpen(isOpen) {
+      if (isOpen) {
+        navChat.classList.add("is-open");
+      } else {
+        navChat.classList.remove("is-open");
+      }
+    }
+
+    function submitNavPrompt(promptText) {
+      var text = (promptText || "").trim();
+      if (!text) return;
+      openChatWithPrompt(text);
+      navInput.value = "";
+      setNavOpen(false);
+    }
+
+    navInput.addEventListener("focus", function () { setNavOpen(true); });
+    navInput.addEventListener("click", function () { setNavOpen(true); });
+    navInput.addEventListener("keydown", function (e) {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        submitNavPrompt(navInput.value);
+      } else if (e.key === "Escape") {
+        setNavOpen(false);
+      }
+    });
+
+    navSend.addEventListener("click", function () {
+      submitNavPrompt(navInput.value);
+    });
+
+    navOptions.addEventListener("click", function (e) {
+      var option = e.target.closest(".rp-nav-chat__option");
+      if (!option) return;
+      submitNavPrompt(option.getAttribute("data-prompt") || option.textContent);
+    });
+
+    document.addEventListener("click", function (e) {
+      if (!navChat.contains(e.target)) setNavOpen(false);
+    });
+  }
 
   launcher.classList.add("rp-chat-attention");
   setTimeout(function () { hint.classList.add("is-visible"); }, 1200);
+  initLandbotContainer();
 })();
 </script>
 <!-- /Red Points Chat -->
